@@ -27,7 +27,7 @@ class PlayerInput:
         if user_guess.lower() in new_list: return True
         else: return False
     
-    def check_spot(user_guess, word):
+    def check_spot(user_guess, word) -> bool:
         '''Checks to see if letter has already been guessed'''
         for letter in word:
             if letter[0] == user_guess.lower():
