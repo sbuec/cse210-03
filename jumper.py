@@ -22,3 +22,4 @@ while running:
         for i in range(mistakes, 6, 1):
             print(jumpMan[i])
 
+
