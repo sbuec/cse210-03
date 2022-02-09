@@ -35,7 +35,7 @@ class PlayerInput:
                     return False
         return True
 
-
+      
 class WordGuess:
     '''Displays and manages the word to guess'''
 
