@@ -66,10 +66,10 @@ class WordGuess:
         '''Checks for '_' in guesse list'''
         check = []
         for letter in word:
-            if letter[1] == '_': check.append('False')
-        else: check.append('True')
+            if letter[1] == '_': check.append('True')
+        else: check.append('False')
 
-        if 'False' in check: return True
+        if 'True' in check: return True
         else: return False
 
     def show_word(characters:list) -> None:
