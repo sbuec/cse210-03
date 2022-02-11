@@ -29,3 +29,4 @@ class jumpImg:
             for i in range(self.mistakes, 6):
                 print(self.image[i])
             print()
+            print(f'Incorrect guesses: {self.mistakes}')
