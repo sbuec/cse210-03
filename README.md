@@ -1,6 +1,11 @@
 JUMP-MAN
 
-Authors:  Daniel Jones(Lead), Steven Buechele, Eric Woll, Tebakaro Tione
+Authors and github account names:  
+Daniel Jones = washu-misaki
+Steven Buechele = sbuec
+Eric Woll = steelheart96
+Tebakaro Tione = tebtione
+Connor Baltich = canadianbleach
 
 Specifics:
 
