@@ -21,12 +21,9 @@ class jumpImg:
         *display image of jumper
     '''
     def picture(self):
-        running = True
-        while running:
-            if self.mistakes > 2:
-                self.image[3] = "  X  "
-                running = False
-            for i in range(self.mistakes, 6):
-                print(self.image[i])
-            print()
-            print(f'Incorrect guesses: {self.mistakes}')
+        if self.mistakes > 2:
+            self.image[3] = "  X  "
+        for i in range(self.mistakes, 6):
+            print(self.image[i])
+        print()
+        print(f'Incorrect guesses: {self.mistakes}')

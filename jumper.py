@@ -8,7 +8,6 @@ from jumpImg import *
 from playerinput import PlayerInput
 from wordguess import WordGuess    
 
-
 def main():
     jumpman = jumpImg()
     jumpman.picture()
