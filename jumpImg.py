@@ -1,8 +1,5 @@
-# create image of jumping man
-# image gets shorter with each incorrect guess from main
 class jumpImg:
     def __init__(self):
-        # Sets self.image as default picture of man jumping stored 
         self.image = [
         " ___ ",
         "/___\\",
@@ -10,20 +7,20 @@ class jumpImg:
         "  O  ",
         " /|\ ",
         " / \ "]
-        # Creates self.mistakes variable to keep track of number of bad guesses
-        self.mistakes = 0
+        self._mistakes = 0
 
-    '''
-    Checks number of mistakes
-    Prints image line by line, skips 1 line per mistake
-    If mistakes > 2, 
-        *change image head from 'O' to 'X'
-        *display image of jumper
-    '''
     def picture(self):
-        if self.mistakes > 2:
+        if self._mistakes > 2:
             self.image[3] = "  X  "
-        for i in range(self.mistakes, 6):
+
+        for i in range(self._mistakes, len(self.image)):
             print(self.image[i])
         print()
-        print(f'Incorrect guesses: {self.mistakes}')
+        print(f'Incorrect guesses: {self._mistakes}')
+    
+    def get_mistakes(self):
+        return self._mistakes
+    
+    def set_mistakes(self, amount: int):
+        self._mistakes = amount
+        print(self._mistakes)

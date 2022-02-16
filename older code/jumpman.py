@@ -93,11 +93,11 @@ class hangman:
             if (self.guess == 3):
                 self.jumpMan[self.guess] = ""
                 self.jumpMan[4] = "    X    "
-                return False;
+                return False
             else:
                 self.jumpMan[self.guess] = ""
                 self.guess += 1
-                return True;
+                return True
 
     class wordBank:
         ''' Manages guesses and creating words '''
@@ -143,10 +143,10 @@ class hangman:
             self.charsGuessed.append(guess)
             if (guess in self.secretWord):
                 print(f"Great! There was a(n) {guess} in the secret word!")
-                return True;
+                return True
             else:
                 print(f"Sorry! There is not a(n) {guess} in the secret word!")
-                return False;
+                return False
 
         def guessAndCheck(self, prompt):
             '''Get guess and check answer'''

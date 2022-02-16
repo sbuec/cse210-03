@@ -1,29 +1,98 @@
-"""
-Program: Jumpman
+'''
+Authors:
+    Daniel Jones = washu-misaki, 
+    Steven Buechele = sbuec, 
+    Eric Woll = steelheart96, 
+    Tebakaro Tione = tebtione, 
+    Connor Baltich = canadianbleach
+'''
 
-Authors: Daniel Jones(Lead), Steven Buechele, Eric Woll, Tebakaro Tione
-"""
-
-from jumpImg import *
+from jumpimg import jumpImg
 from playerinput import PlayerInput
-from wordguess import WordGuess    
+from util import util
+from wordguess import WordGuess
 
 def main():
-    jumpman = jumpImg()
-    jumpman.picture()
+    # Create and start a new game
+    game = hangman()
+    game.start()
 
-    '''
-    Still needed:
-    * Commands in main() to create the word and interact with the player
-    * Way to count number of bad guesses from player
-    Something like:
+class hangman:
+    ''' The class to control all classes. The games container.'''
+    def __init__(self) -> None:
+        self.word = WordGuess()
+        self.player = jumpImg()
+        self.mistakes = 0
+        self.win = False
 
-    if BAD_GUESS:
-        jumpman.mistakes += 1
+    def start(self):
+        ''' This is the only method that needs to be called to start.'''
+        run = True
+        while run:
 
-    if jumpman.mistakes > 2:
-        END GAME HERE
-    '''
+            no_input = True
+            while no_input:
+
+                util.clear()
+                self.word.display()
+                print()
+                self.player.picture()
+                print(f"Guessed Characters: {self.word.chars_guessed}")
+
+                user_guess = PlayerInput.retrieve('Guess a letter [a-z]: ')
+                no_input = PlayerInput.isBadInput(user_guess)
+                if no_input:
+                    print('That input is not accepted.')
+                    util.wait(3)
+
+            if self.word.check_spot(user_guess):
+
+                self.word.add_guessed_char(user_guess)
+
+                if self.word.isCorrect(user_guess):
+                    self.word.update(user_guess)
+                else:
+                    self.mistakes += 1
+                    self.player.set_mistakes(self.mistakes)
+
+            run = self.word.isIncomplete()
+
+            if self.mistakes >= 3:
+                run = False
+
+            if run == False:
+                util.clear()
+                self.word.display()
+                print()
+                self.player.picture()
+                print(f"Guessed Characters: {self.word.chars_guessed}")
+                print(self.word.hidden_word)
+    
+                end = self.endGame()
+
+                if not end:
+                    self.reset()
+    
+    def reset(self):
+        self.word = WordGuess()
+        self.player = jumpImg()
+        self.mistakes = 0
+        self.win = False
+        self.start()
+    
+    def endGame(self):
+        if (self.win):
+            print("Great win!")
+        else:
+            print("Better luck next time!\n")
+
+        usr_response = PlayerInput.retrieve("Would you like to play again? [y/n] ")
+
+        if (usr_response == 'y'): return False
+        elif (usr_response == 'n'): return True
+        else:
+            print("A valid input was not given. Bye.")
+            return True
 
 if __name__ == '__main__':
     main()
