@@ -7,7 +7,7 @@ Authors:
     Connor Baltich = canadianbleach
 '''
 
-from jumpimg import jumpImg
+from jumpImg import jumpImg
 from playerinput import PlayerInput
 from util import util
 from wordguess import WordGuess
