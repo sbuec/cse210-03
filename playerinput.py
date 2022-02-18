@@ -12,18 +12,3 @@ class PlayerInput:
         else:
             if user_input.isnumeric(): return True
             else: return False
-    
-    def isCorrect(characters:list, user_guess:str) -> bool:
-        '''Check to see if user guess is correct'''
-        new_list = [char[0] for char in characters]
-
-        if user_guess.lower() in new_list: return True
-        else: return False
-    
-    def check_spot(user_guess, word) -> bool:
-        '''Checks to see if letter has already been guessed'''
-        for letter in word:
-            if letter[0] == user_guess.lower():
-                if letter[1] != '_':
-                    return False
-        return True
